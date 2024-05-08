@@ -1,0 +1,97 @@
+Access member using Structure
+
+To access members of a structure using pointers, we use the -> operator.
+Example 2.1
+
+#include <stdio.h>
+struct person
+{
+   char name [50];
+   int age;
+   float weight;
+};
+
+int main()
+{
+    struct person *personPtr, person1;
+    personPtr = &person1;   
+    printf("\nEnter Name: ");
+    scanf("%s", &personPtr->name);
+
+    printf("Enter Age: ");
+    scanf("%d", &personPtr->age);
+
+    printf("\nEnter Weight in Kg: ");
+    scanf("%f", &personPtr->weight);
+   
+    printf("\n...Personal Details...\n");
+    printf("\nName: %s\n", personPtr->name);
+    printf("Age: %d\n", personPtr->age);
+    printf("Weight: %f", personPtr->weight);
+
+    return 0;
+}
+Example 2.2
+
+#include <stdio.h>
+
+// declaring structure
+struct Complex
+{
+    int real;
+    int imaginary;
+} c = {3,5}; // declaring structure variable
+
+int main ()
+{
+    // declaring structure pointer variable 
+    struct Complex *cptr = &c;
+    
+    // accessing values and assigning them new values using arrow operator
+    cptr->real = 5;
+    cptr->imaginary = 9;
+    
+    printf("Real value: %d\nImaginary value: %d",cptr->real, cptr->imaginary);
+    return 0;
+}
+Dynamic memory allocation of Structure
+
+Example 3.1
+
+#include <stdio.h>
+#include <stdlib.h>
+struct person {
+   int age;
+   float weight;
+   char name[30];
+};
+
+int main()
+{
+   struct person *ptr;
+   int i, n;
+
+   printf("Enter the number of persons: \n");
+   scanf("%d", &n);
+
+   // allocating memory for n numbers of struct person
+   ptr = (struct person*) malloc(n * sizeof(struct person));
+
+   for(i = 0; i < n; ++i)
+   {
+       printf("Enter first name and age respectively: \n");
+
+       // To access members of 1st struct person,
+       // ptr->name and ptr->age is used
+
+       // To access members of 2nd struct person,
+       // (ptr+1)->name and (ptr+1)->age is used
+       scanf("%s %d", (ptr+i)->name, &(ptr+i)->age);
+   }
+
+   printf("..Displaying Information..\n");
+   for(i = 0; i < n; ++i)
+       printf("Name: %s\tAge: %d\n", (ptr+i)->name, (ptr+i)->age);
+
+   return 0;
+}

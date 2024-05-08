@@ -1,0 +1,226 @@
+2. Example of error handling in C
+Program:
+
+#include <stdio.h>       
+#include <errno.h>       
+#include <string.h> 
+ 
+int main(){
+    FILE *fp;                       //File Pointer
+    fp = fopen("test.txt","r");
+    if(fp==NULL){                  //If file doesn't exists 
+        printf("Value of errno: %d",errno);
+        printf("\nError Message: %s",strerror(errno));
+        perror("Message from perror");
+    }
+    else{
+        int num;
+        fscanf(fp,"%d",&num); //Reading integer data from the file
+        printf("File Data: %d",num);
+        fclose(fp); 
+    }
+    return 0;
+}
+3. Errno. in C
+Example:  
+
+#include <stdio.h>
+#include <errno.h>
+int main()
+{
+FILE * f;
+f = fopen("article.txt", "r");
+printf("...Program to find error number...\n");
+printf("\nValue of error number as error number: %d\n ", errno);
+return 0;
+}
+4.1 perror()
+Syntax:
+
+void perror(const char *str1)
+
+Example:
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+  
+int main(){
+    FILE* fp;
+    fp = fopen("test.txt","r");
+    
+    if(fp == NULL){          
+       
+        printf("...Example of perror()...\n");
+        perror("\nMessage from perror "); 
+        return -1;
+    }
+    fclose(fp);
+    return 0;
+}
+Syntax:
+
+char *strerror(int errnum)
+Example:
+
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+  
+int main(){
+    FILE* fp;
+    fp = fopen("test.txt","r");
+    
+    if(fp==NULL)
+    {          
+        printf("...Example of strerror()...\n");
+        printf("\nError: %s\n",strerror(errno)); 
+    }
+    fclose(fp);
+    return 0;
+}
+Syntax:
+
+int ferror(FILE *stream);
+
+Example:
+
+#include <stdio.h>
+
+int main(){
+   FILE *fp;
+   fp = fopen("test.txt","w");
+
+   char ch = fgetc(fp);  
+   if(ferror(fp)){      
+      printf("...Example of ferror()...\n");
+      printf("\nFile is opened in writing mode!");
+      printf("\nError in reading from the file!");
+      perror("Error Message from perror");
+   }
+   fclose(fp);
+   return(0);
+}
+Syntax:
+
+int feof(FILE *stream);
+Example:
+
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(){
+   FILE *fp;
+   fp = fopen("test.txt","r");
+   if(fp==NULL){
+      perror("Message from perror");
+      return -1;
+   }
+   while(true){
+      char ch = fgetc(fp); 
+      if(feof(fp)){       
+         break;
+      }
+      printf("%c",ch);
+   }
+   fclose(fp);
+   return 0;
+}
+4.5   clearerr()
+Syntax:
+
+void clearerr(FILE *stream)
+Example:
+
+#include <stdio.h>
+int main(){
+   FILE *fp;
+   fp = fopen("test.txt","w");
+   char ch = fgetc(fp); 
+   if(ferror(fp)) {    
+      printf("Error in reading from file!");
+   }
+   clearerr(fp);       
+   if(ferror(fp)){   
+      printf("Error again in reading from file!");
+   }
+   fclose(fp);
+   return 0;
+}
+Syntax:
+
+exit(EXIT_SUCCESS);  //successful termination
+exit(EXIT_FAILURE); //unsuccessful termination
+
+Example:
+
+#include<stdio.h>
+#include<errno.h>
+#include<string.h>
+#include<stdlib.h>
+  
+int main(){
+    FILE *fp;
+    fp = fopen ("test.txt","r");
+    if(fp==NULL)
+    {
+        printf("...Example of Exit status...\n");
+        printf("\nValue of errno: %d",errno);
+        perror("Error printed by perror");
+        exit(EXIT_FAILURE); 
+        printf("This message will not be printed!"); 
+    }
+    else{
+        fclose (fp);
+        exit(EXIT_SUCCESS); 
+        printf("This message will not be printed!"); 
+    }
+    return 0;
+}
+4.7   Division by zero
+
+Example 1:   
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void division(int x){
+    printf("...Example of Division By Zero...\n");
+    if(x==0){ 
+        printf("\nDivision by Zero is not allowed!\n");
+        printf("\nYou are dividing a number by zero!!\nYou will face an error!!\n");
+        exit(EXIT_FAILURE); 
+    }
+    else{
+        float fx = 10/x;
+        printf("f(x) is: %.5f",fx);
+        
+    }
+}
+  
+int main(){
+    int x = 0; 
+    division(x); //Calling function to perform division
+    return 0;
+}
+Example 2:
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+
+   int dividend = 80;
+   int divisor = 0;
+   int quotient;
+ 
+   if( divisor == 0){
+      fprintf(stderr, "Division by zero is not possible!!!\n");
+      exit(-1);
+   }
+   
+   quotient = dividend / divisor;
+   fprintf(stderr, "Value of quotient : %d\n", quotient );
+
+   exit(0);
+}

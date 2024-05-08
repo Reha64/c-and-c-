@@ -1,0 +1,146 @@
+Example:   Fibonacci series using direct recursion
+
+#include<stdio.h>
+int fibonacci_1(int i) {
+  if (i == 0) {
+    return 0;
+  }
+  if (i == 1) {
+    return 1;
+  }
+  return fibonacci_1(i - 1) + fibonacci_1(i - 2);
+}
+
+int main() {
+  int i, n;
+  printf("*...Fibonacci Series...*\n");
+  printf("\nEnter a number: ");
+  scanf("%d", & n);
+  for (i = 0; i < n; i++) {
+    printf("%d\n", fibonacci_1(i));
+  }
+  return 0;
+}
+Example:   Declaration of odd and even numbers. If odd add 1 and if even 
+                   subtract 1.
+
+#include<stdio.h>  
+void odd();
+void even();
+int n=1;
+
+void odd()
+{
+    if(n <= 10)
+    {
+        printf("%d\n", n+1);
+        n++;
+        even();
+    }
+    return;
+}
+
+void even()
+{
+    if(n <= 10)
+    {
+        printf("%d\n", n-1);
+        n++;
+        odd();
+    }
+    return;
+}
+
+int main()
+{
+    odd();
+}
+Example:   Sum of natural numbers using recursion
+
+#include <stdio.h>
+int sum(int n);
+int main() {
+    int number, result;
+    printf("*...Sum of natural numbers...*\n");
+    printf("\nEnter a positive integer: ");
+    scanf("%d", &number);
+    result = sum(number);
+    printf("sum of 1 to %d = %d" ,number ,result);
+    return 0;
+}
+int sum(int n) {
+    if (n != 0)
+        return n + sum(n-1); 
+    else
+        return n;
+}
+Example:   Factorial of a number using recursion
+
+#include<stdio.h>
+int find_factorial(int);
+int main()
+{
+   int num, fact;
+   printf("*...Factorial of a number...*\n");
+   printf("\nEnter number: ");
+   scanf("%d",&num);
+   fact =find_factorial(num);
+   printf("\nFactorial of %d is: %d",num, fact);
+   return 0;
+}
+
+int find_factorial(int n)
+{
+   //Factorial of 0 is 1 
+   if(n==0)
+      return(1);
+   return(n*find_factorial(n-1));
+}
+Example:   Fibonacci series using recursive function
+
+#include<stdio.h>  
+int fib(int);  
+void main ()  
+{  
+  int num = 10,fibo;  
+  printf("*...Fibonacci series using recursive function!...*\n\n");
+  fibo = fib(num);  
+  printf("Result is: %d",fibo);  
+}  
+int fib(int num)  
+{  
+  if (num==0)  
+  {  
+  return 0;  
+  }  
+  else if (num == 1)  
+  {  
+      return 1;   
+  }  
+  else  
+  {  
+      return fib(num-1)+fib(num-2);  
+  }  
+}
+
+ Memory allocation of the Recursive method
+Example:
+
+#include <stdio.h>
+
+int rfunc(int a)  //2) recursive function
+{  
+    if(a == 0)  
+        return 0; 
+    else   
+    {  
+        printf("\n%d ",a);  
+        return rfunc(a-1); // 3) recursive call is made
+    }  
+} 
+int main()
+{
+   printf("\n...Memory allocation using recursive method...\n");
+   rfunc(8); // 1) function call from main
+   return 0;
+}

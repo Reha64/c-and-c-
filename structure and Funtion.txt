@@ -1,0 +1,168 @@
+1. How to Pass Structure Members To Functions?
+Example:
+
+#include <stdio.h>
+struct student {
+   char name[50];
+   int per,rno;
+};
+
+void display(int a, int b);
+
+int main() {
+   struct student s1;
+
+   printf("Enter name: ");
+   gets(s1.name);
+   printf("Enter the roll number: ");
+   scanf("%d",&s1.rno);
+   printf("Enter percentage: ");
+   scanf("%d", &s1.per);
+   display(s1.rno,s1.per);
+   return 0;
+}
+
+void display(char a, int b, int c ) {
+   printf("\n…Displaying information…\n");
+   printf("Name: %d", a);
+   printf("Roll number: %d", b);
+   printf("\nPercentage: %d", c);
+}
+
+2. How to Return Structure from a Function?
+
+Example:
+
+#include<stdio.h>
+   struct wage{
+   char name[50];
+   int rs;
+ };
+
+ struct wage employee();
+
+ int main(){
+   struct wage e;
+
+   e = employee();
+   printf("\n...Wage details of the employee...\n");
+   printf("Name: %s",e.name);
+   printf("\nWage: %d",e.rs);
+   return 0;
+ }
+
+struct wage employee(){
+  struct wage e1;
+
+   printf("Enter the name of the employee: ");
+   scanf("%s",e1.name);
+   printf("\nEnter the wage in Rs.: ");
+   scanf("%d",&e1.rs);
+
+   return e1;
+}
+3.1  Passing structure to a function by value 
+
+
+Example:
+
+
+#include <stdio.h>
+#include <string.h>
+ 
+struct student 
+{
+            int id;
+            char name[20];
+            float percentage;
+};
+ 
+void func(struct student record);
+ 
+int main() 
+{
+            struct student record;
+ 
+            record.id=1;
+            strcpy(record.name, "Kinjal");
+            record.percentage = 78.8;
+ 
+            func(record);
+            return 0;
+}
+void func(struct student record)
+{
+            printf(" Id is: %d \n", record.id);
+            printf(" Name is: %s \n", record.name);
+          
+3.2  Passing structure to a function by address(reference) 
+
+
+Example:
+
+
+#include<stdio.h>
+
+
+struct car
+{
+    char name[20];
+    int seat;
+    char fuel[10];
+};
+void print_struct(struct car *);
+
+
+int main()
+{
+    struct car tata;
+    printf("Enter the model name: "); 
+    scanf("%s",tata.name);
+    printf("\nEnter the seating capacity: ");
+    scanf("%d",&tata.seat);
+    printf("\nEnter the fuel type: ");
+    scanf("%s",tata.fuel);
+    print_struct(&tata);
+
+
+    return 0;
+}
+void print_struct(struct car *ptr)
+{
+    printf("\n---Details---\n");
+    printf("Name: %s\n", ptr->name);
+    printf("Seat: %d\n", ptr->seat);
+    printf("Fuel type: %s\n", ptr->fuel);
+    printf("\n");
+}
+3.3  No need to pass a structure – Declare structure variable as global
+Example:
+
+#include <stdio.h>
+#include <string.h>
+ 
+struct student 
+{
+            int id;
+            char name[20];
+            float percentage;
+};
+struct student record; // Global declaration of structure
+ 
+void structure_demo();
+ 
+int main() 
+{
+            record.id=1;
+            strcpy(record.name, "Raju");
+            record.percentage = 86.5;
+ 
+            structure_demo();
+            return 0;
+}
+void structure_demo()
+{
+            printf(" Id is: %d \n", record.id);
+            printf(" Name is: %s \n", record.name);
+            printf(" Percentage is: %f \n", record.percentage);
+}
