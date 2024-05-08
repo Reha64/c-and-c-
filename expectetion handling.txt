@@ -1,0 +1,260 @@
+Property 5.1
+There is a special catch block called the ‘catch-all’ block, written as catch(…), that can be used to catch all types of exceptions.
+
+Example
+
+In the following program, an int is thrown as an exception, but there is no catch block for int, so the catch(…) block will be executed. 
+
+
+// C program to demonstate the use of catch all
+// in exception handling.
+ 
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    // try block
+    try {
+ 
+        // throw
+        throw 10;
+    }
+ 
+    // catch block
+    catch (char* excp) {
+        cout << "Caught " << excp;
+    }
+ 
+    // catch all
+    catch (...) {
+        cout << "Default Exception\n";
+    }
+    return 0;
+}
+Output
+Default Exception
+
+
+Property 5.2
+Implicit type conversion doesn’t happen for primitive types.
+
+Example
+
+In the following program, ‘a’ is not implicitly converted to int. 
+
+
+//// C program to demonstate property 2: Implicit type
+/// conversion doesn't happen for primitive types.
+// in exception handling.
+ 
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    try {
+        throw 'a';
+    }
+    catch (int x) {
+        cout << "Caught " << x;
+    }
+    catch (...) {
+        cout << "Default Exception\n";
+    }
+    return 0;
+}
+Output
+Default Exception
+
+
+Output: 
+
+Default Exception
+
+Property 5.3
+If an exception is thrown and not caught anywhere, the program terminates abnormally.
+
+Example
+
+In the following program, a char is thrown, but there is no catch block to catch the char. 
+
+
+// C program to demonstate property 3: If an exception is
+// thrown and not caught anywhere, the program terminates
+// abnormally in exception handling.
+ 
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    try {
+        throw 'a';
+    }
+    catch (int x) {
+        cout << "Caught ";
+    }
+    return 0;
+}
+Output
+
+terminate called after throwing an instance of 'char'
+We can change this abnormal termination behavior by writing our unexpected function.
+
+Note: A derived class exception should be caught before a base class exception.
+
+Like Java, the C library has a standard exception class which is the base class for all standard exceptions. All objects thrown by the components of the standard library are derived from this class. Therefore, all standard exceptions can be caught by catching this type.
+
+Property 5.4
+Unlike Java, in C, all exceptions are unchecked, i.e., the compiler doesn’t check whether an exception is caught or not (See this for details). So, it is not necessary to specify all uncaught exceptions in a function declaration. However,exception-handling it’s a recommended practice to do so.
+
+Example
+
+The following program compiles fine, but ideally, the signature of fun() should list the unchecked exceptions. 
+
+
+// C program to demonstate property 4 in exception
+// handling.
+ 
+#include <iostream>
+using namespace std;
+ 
+// This function signature is fine by the compiler, but not
+// recommended. Ideally, the function should specify all
+// uncaught exceptions and function signature should be
+// "void fun(int *ptr, int x) throw (int *, int)"
+void fun(int* ptr, int x)
+{
+    if (ptr == NULL)
+        throw ptr;
+    if (x == 0)
+        throw x;
+    /* Some functionality */
+}
+ 
+int main()
+{
+    try {
+        fun(NULL, 0);
+    }
+    catch (...) {
+        cout << "Caught exception from fun()";
+    }
+    return 0;
+}
+Output
+Caught exception from fun()
+
+A better way to write the above code: 
+
+
+// C program to demonstate property 4 in better way
+ 
+#include <iostream>
+using namespace std;
+ 
+// Here we specify the exceptions that this function
+// throws.
+void fun(int* ptr, int x) throw(
+    int*, int) // Dynamic Exception specification
+{
+    if (ptr == NULL)
+        throw ptr;
+    if (x == 0)
+        throw x;
+    /* Some functionality */
+}
+ 
+int main()
+{
+    try {
+        fun(NULL, 0);
+    }
+    catch (...) {
+        cout << "Caught exception from fun()";
+    }
+    return 0;
+}
+Output
+Caught exception from fun()
+
+Note: The use of Dynamic Exception Specification has been deprecated since C11. One of the reasons for it may be that it can randomly abort your program. This can happen when you throw an exception of another type which is not mentioned in the dynamic exception specification. Your program will abort itself because in that scenario, it calls (indirectly) terminate(), which by default calls abort().
+
+Property 5.5
+In C, try/catch blocks can be nested. Also, an exception can be re-thrown using “throw; “. 
+
+Example
+
+The following program shows try/catch blocks nesting.
+
+
+// C program to demonstrate try/catch blocks can be nested
+// in C
+ 
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+ 
+    // nesting of try/catch
+    try {
+        try {
+            throw 20;
+        }
+        catch (int n) {
+            cout << "Handle Partially ";
+            throw; // Re-throwing an exception
+        }
+    }
+    catch (int n) {
+        cout << "Handle remaining ";
+    }
+    return 0;
+}
+Output
+Handle Partially Handle remaining 
+
+A function can also re-throw a function using the same “throw; ” syntax. A function can handle a part and ask the caller to handle the remaining.
+
+Property 5.6
+When an exception is thrown, all objects created inside the enclosing try block are destroyed before the control is transferred to the catch block.
+
+Example
+
+The following program demonstrates the above property.
+
+
+// C program to demonstrate
+ 
+#include <iostream>
+using namespace std;
+ 
+// Define a class named Test
+class Test {
+public:
+    // Constructor of Test
+    Test() { cout << "Constructor of Test " << endl; }
+    // Destructor of Test
+    ~Test() { cout << "Destructor of Test " << endl; }
+};
+ 
+int main()
+{
+    try {
+        // Create an object of class Test
+        Test t1;
+ 
+        // Throw an integer exception with value 10
+        throw 10;
+    }
+    catch (int i) {
+        // Catch and handle the integer exception
+        cout << "Caught " << i << endl;
+    }
+}
+Output
+Constructor of Test 
+Destructor of Test 
+Caught 10
