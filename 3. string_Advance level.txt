@@ -1,0 +1,183 @@
+Example of string:
+
+#include <stdio.h>
+
+int main() {
+  char greetings[] = "Hello World!!";
+  printf("%s", greetings);
+ 
+  return 0;
+}
+
+
+Let's see an example of counting the number of vowels in a string.
+
+Code:
+
+#include<stdio.h>  
+void main ()  
+{  
+    char s[10] = "STEMbotics";  
+    int i = 0;   
+    int count = 0;  
+    while(i<11)  
+    {  
+        if(s[i]=='a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'u' || s[i] == 'o')  
+        {  
+            count ++;  
+        }  
+        i++;  
+    }  
+    print
+
+
+
+
+Let's see the same example of counting the number of vowels by using the null character.
+
+Code:
+
+#include<stdio.h>  
+void main ()  
+{  
+    char s[10] = "STEMbotics";  
+    int i = 0;   
+    int count = 0;  
+    while(s[i] != NULL)  
+    {  
+        if(s[i]=='a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'u' || s[i] == 'o')  
+        {  
+            count ++;  
+        }  
+        i++;  
+    }  
+    printf("The number of vowels %d",count);  
+}  
+
+
+Example:
+
+#include <stdio.h>
+#include <string.h>
+
+int main () {
+
+   char str1[12] = "Hello";
+   char str2[12] = "World";
+   char str3[12];
+   int  len ;
+
+   /* copy str1 into str3 */
+   strcpy(str3, str1);
+   printf("strcpy( str3, str1) :  %s\n", str3 );
+
+   /* concatenates str1 and str2 */
+   strcat( str1, str2);
+   printf("strcat( str1, str2):   %s\n", str1 );
+
+   /* total lenghth of str1 after concatenation */
+   len = strlen(str1);
+   printf("strlen(str1) :  %d\n", len );
+
+   return 0;
+}
+
+Output:
+
+strcpy( str3, str1) :  Hello
+strcat( str1, str2):   HelloWorld
+strlen(str1) :  10
+
+
+Another safer alternative to gets() is fgets() function which reads a specified number of characters.
+
+For example:
+
+#include <stdio.h>
+int main() 
+{
+char name[10];
+printf("Enter your  name plz: ");
+fgets(name, 10, stdin);
+printf("My name is %s ",name);
+return 0;
+}
+
+
+In order to read a string contains spaces, we use the gets() function. Gets ignores the whitespaces. It stops reading when a newline is reached (the Enter key is pressed).
+
+Example:
+
+#include <stdio.h>
+int main() {
+char full_name[25];
+printf("Enter your full name: ");
+gets(full_name);
+printf("My full name is %s ",full_name);
+return 0;
+}
+
+
+
+
+Lets consider the program below which demonstrates string library functions:
+
+Code:
+
+#include <stdio.h>
+#include <string.h>
+int main () {
+//string initialization
+char string1[15]="Hello";
+char string2[15]=" World!";
+char string3[15];
+int val;
+
+//string comparison
+
+val= strcmp(string1,string2);
+if(val==0){
+    printf("Strings are equal\n");
+}
+else{
+    printf("Strings are not equal\n");
+}
+
+
+//string concatenation
+
+printf("Concatenated string: %s",strcat(string1,string2)); //string1 contains hello world!
+
+//string length
+
+printf("\nLength of first string: %d",strlen(string1));
+printf("\nLength of second string: %d",strlen(string2));
+
+//string copy
+
+printf("\nCopied string is: %s\n",strcpy(string3,string1)); 
+
+//string1 is copied into string3
+
+return 0;
+}
+
+
+
+
+The following program demonstrates atoi() function:
+
+Code:
+
+#include <stdio.h>
+int main()
+{
+  char *string_id[10];
+  int ID;
+  printf("Enter a number: ");
+  gets(string_id);
+  ID = atoi(string_id);
+  printf("you enter %d  ",ID);
+  return 0;
+}
+

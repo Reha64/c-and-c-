@@ -1,0 +1,804 @@
+To change the value of a specific element, refer to the index number:
+
+Example:
+
+1)
+
+int mark[5] = {19, 10, 8, 17, 9}
+
+// make the value of the third element to -1
+mark[2] = -1;
+
+// make the value of the fifth element to 0
+mark[4] = 0;
+
+2)
+
+myNumbers[0] = 33;
+
+Code:
+
+#include <stdio.h>
+
+int main() {
+  int myNumbers[] = {25, 50, 75, 100};
+  myNumbers[0] = 33;
+
+  printf("%d", myNumbers[0]);
+ 
+  return 0;
+}
+
+Output:
+
+33
+
+
+
+
+
+
+Program 1: Program to take 5 values from the user and store them in an
+                     array and print the elements stored in the array.
+
+Code:
+
+#include <stdio.h>
+
+int main() {
+
+  int values[5];
+
+  printf("Enter 5 integers: \n");
+
+  // taking input and storing it in an array
+  for(int i = 0; i < 5; ++i) {
+     scanf("%d", &values[i]);
+  }
+
+  printf("Displaying integers: \n");
+
+  // printing elements of an array
+  for(int i = 0; i < 5; ++i) {
+     printf("%d\n", values[i]);
+  }
+  return 0;
+}
+
+Output:
+
+Enter 5 integers: 
+6
+7
+8
+9
+-10
+Displaying integers: 
+6
+7
+8
+9
+-10
+
+
+
+Program 2:   Find the average of n numbers.
+
+Code:
+
+#include <stdio.h>
+
+int main() {
+
+  int marks[10], i, n, sum = 0;
+  double average;
+
+  printf("Enter number of elements: ");
+  scanf("%d", &n);
+
+  for(i=0; i < n; ++i) {
+    printf("Enter number%d: ",i+1);
+    scanf("%d", &marks[i]);
+          
+    // adding integers entered by the user to the sum variable
+    sum += marks[i];
+  }
+
+  // explicitly convert sum to double
+  // then calculate average
+  average = (double) sum / n;
+
+  printf("Average = %.2lf", average);
+
+  return 0;
+}
+
+Output:
+
+Enter number of elements: 5
+Enter number1: 10
+Enter number2: 20
+Enter number3: 30
+Enter number4: 40
+Enter number5: 50
+Average = 30.00
+
+
+
+The following example outputs all elements in the myNumbers array:
+
+Code:
+
+#include <stdio.h>
+
+int main() {
+  int myNumbers[] = {25, 50, 75, 100};
+  int i;
+  
+  for (i = 0; i < 4; i++) {
+    printf("%d\n", myNumbers[i]);
+  }
+ 
+  return 0;
+}
+
+Output:
+
+25
+50
+75
+100
+
+Another common way to create arrays, is to specify the size of the array, and add elements later:
+
+Code:
+
+#include <stdio.h>
+
+int main() {
+  // Declare an array of four integers:
+  int myNumbers[4];
+
+  // Add elements to it
+  myNumbers[0] = 25;
+  myNumbers[1] = 50;
+  myNumbers[2] = 75;
+  myNumbers[3] = 100;
+
+  printf("%d\n", myNumbers[0]);
+ 
+  return 0;
+}
+
+Output:
+
+25
+
+
+
+
+
+
+result = add(4,5);
+
+Here, is the complete code:
+
+#include <stdio.h>
+int add(int a, int b);	//function declaration
+int main()
+{
+	int a = 10,b = 20;
+	int c = add(10,20); 	//function call
+	printf("Addition: %d\n",c);
+	getch();
+}
+int add(int a,int b)	//function body
+{
+	int c;
+	c=a+b;
+	return c;
+}
+
+Output:
+
+Addition: 30
+
+
+Example:
+
+#include <stdio.h>
+ 
+/* function declaration */
+void swap(int x, int y);
+ 
+int main () {
+
+   /* local variable definition */
+   int a = 100;
+   int b = 200;
+ 
+   printf("Before swap, value of a : %d\n", a );
+   printf("Before swap, value of b : %d\n", b );
+ 
+   /* calling a function to swap the values */
+   swap(a, b);
+ 
+   printf("After swap, value of a : %d\n", a );
+   printf("After swap, value of b : %d\n", b );
+ 
+   return 0;
+}
+
+void swap(int x, int y) {
+
+   int temp;
+
+   temp = x; /* save the value of x */
+   x = y;    /* put y into x */
+   y = temp; /* put temp into y */
+  
+   return;
+}
+
+Output:
+
+Before swap, value of a : 100
+Before swap, value of b : 200
+After swap, value of a : 100
+After swap, value of b : 200
+
+/* function definition to swap the values */
+void swap(int *x, int *y) {
+
+   int temp;
+   temp = *x;    /* save the value at address x */
+   *x = *y;      /* put y into x */
+   *y = temp;    /* put temp into y */
+  
+   return;
+}
+
+
+
+
+
+
+
+
+
+Example:
+
+#include <stdio.h>
+
+int main () {
+
+   /* local variable definition */
+   int a = 100;
+   int b = 200;
+ 
+   printf("Before swap, value of a : %d\n", a );
+   printf("Before swap, value of b : %d\n", b );
+ 
+   /* calling a function to swap the values */
+   swap(&a, &b);
+ 
+   printf("After swap, value of a : %d\n", a );
+   printf("After swap, value of b : %d\n", b );
+ 
+   return 0;
+}
+void swap(int *x, int *y) {
+
+   int temp;
+
+   temp = *x; /* save the value of x */
+   *x = *y;    /* put y into x */
+   *y = temp; /* put temp into y */
+  
+   return;
+}
+
+Output:
+
+Before swap, value of a : 100
+Before swap, value of b : 200
+After swap, value of a : 200
+After swap, value of b : 100
+
+/* function definition to swap the values */
+void swap(int *x, int *y) {
+
+   int temp;
+   temp = *x;    /* save the value at address x */
+   *x = *y;      /* put y into x */
+   *y = temp;    /* put temp into y */
+  
+   return;
+}
+
+
+
+
+
+
+
+
+
+Example:
+
+#include <stdio.h>
+
+int main () {
+
+   /* local variable definition */
+   int a = 100;
+   int b = 200;
+ 
+   printf("Before swap, value of a : %d\n", a );
+   printf("Before swap, value of b : %d\n", b );
+ 
+   /* calling a function to swap the values */
+   swap(&a, &b);
+ 
+   printf("After swap, value of a : %d\n", a );
+   printf("After swap, value of b : %d\n", b );
+ 
+   return 0;
+}
+void swap(int *x, int *y) {
+
+   int temp;
+
+   temp = *x; /* save the value of x */
+   *x = *y;    /* put y into x */
+   *y = temp; /* put temp into y */
+  
+   return;
+}
+
+Output:
+
+Before swap, value of a : 100
+Before swap, value of b : 200
+After swap, value of a : 200
+After swap, value of b : 100
+
+/* function definition to swap the values */
+void swap(int *x, int *y) {
+
+   int temp;
+   temp = *x;    /* save the value at address x */
+   *x = *y;      /* put y into x */
+   *y = temp;    /* put temp into y */
+  
+   return;
+}
+
+
+
+
+
+
+
+
+
+Example:
+
+#include <stdio.h>
+
+int main () {
+
+   /* local variable definition */
+   int a = 100;
+   int b = 200;
+ 
+   printf("Before swap, value of a : %d\n", a );
+   printf("Before swap, value of b : %d\n", b );
+ 
+   /* calling a function to swap the values */
+   swap(&a, &b);
+ 
+   printf("After swap, value of a : %d\n", a );
+   printf("After swap, value of b : %d\n", b );
+ 
+   return 0;
+}
+void swap(int *x, int *y) {
+
+   int temp;
+
+   temp = *x; /* save the value of x */
+   *x = *y;    /* put y into x */
+   *y = temp; /* put temp into y */
+  
+   return;
+}
+
+Output:
+
+Before swap, value of a : 100
+Before swap, value of b : 200
+After swap, value of a : 200
+After swap, value of b : 100
+
+Below is an example of a function, which takes 2 numbers as input from user, and display which is the greater number.
+
+#include<stdio.h>
+
+void greatNum();       // function declaration
+
+int main()
+{
+    greatNum();        // function call
+    return 0;
+}
+
+void greatNum()        // function definition
+{
+    int i, j;
+    printf("Enter 2 numbers that you want to compare...\n");
+    scanf("%d %d", &i, &j);
+    if(i > j) {
+        printf("The greater number is: %d\n", i);
+    }
+    else {
+        printf("The greater number is: %d\n", j);
+    }
+}
+We have modified the above example to make the function greatNum() return the number which is greater amongst the 2 input numbers.
+
+#include<stdio.h>
+
+int greatNum();       // function declaration
+
+int main()
+{
+    int result;
+    result = greatNum();        // function call
+    printf("The greater number is: %d", result);
+    return 0;
+}
+
+int greatNum()        // function definition
+{
+    int i, j, greaterNum;
+    printf("Enter 2 numbers that you want to compare...\n");
+    scanf("%d %d", &i, &j);
+    if(i > j) {
+        greaterNum = i;
+    }
+    else {
+        greaterNum = j;
+    }
+    // returning the result
+    return greaterNum;
+}
+
+Output:
+
+Enter 2 numbers that you want to compare...
+5 4
+The greater number is: 5
+
+
+3.   Function with arguments and no return value 
+
+We are using the same function as example again and again, to demonstrate that to solve a problem there can be many different ways.
+This time, we have modified the above example to make the function greatNum() take two int values as arguments, but it will not be returning anything.
+
+#include<stdio.h>
+
+void greatNum(int a, int b);       // function declaration
+
+int main()
+{
+    int i, j;
+    printf("Enter 2 numbers that you want to compare...\n");
+    scanf("%d %d", &i, &j);
+    greatNum(i, j);        // function call
+    return 0;
+}
+
+void greatNum(int x, int y)        // function definition
+{
+    if(x > y) {
+        printf("The greater number is: %d", x);
+    }
+    else {
+        printf("The greater number is: %d", y);
+    }
+}
+
+Output:
+
+Enter 2 numbers that you want to compare...
+5 4
+The greater number is: 5
+
+
+
+
+4.  Function with arguments and a return value
+
+This is the best type, as this makes the function completely independent of inputs and outputs, and only the logic is defined inside the function body. 
+
+#include<stdio.h>
+
+int greatNum(int a, int b);       // function declaration
+
+int main()
+{
+    int i, j, result;
+    printf("Enter 2 numbers that you want to compare...\n");
+    scanf("%d %d", &i, &j);
+    result = greatNum(i, j); // function call
+    printf("The greater number is: %d", result);
+    return 0;
+}
+
+int greatNum(int x, int y)        // function definition
+{
+    if(x > y) {
+        return x;
+    }
+    else {
+        return y;
+    }
+}
+
+Output:
+
+Enter 2 numbers that you want to compare...
+5 4
+The greater number is: 5
+
+
+
+
+
+
+
+
+Let's write a very simple program, where we will declare and define an array of integers in our main() function and pass one of the array element to a function, which will just print the value of the element.
+
+#include<stdio.h>
+
+void giveMeArray(int a);
+
+int main()
+{
+    int myArray[] = { 2, 3, 4 };
+    giveMeArray(myArray[2]);        //Passing array element myArray[2] only.
+    return 0;
+}
+
+void giveMeArray(int a)
+{
+    printf("%d", a);
+}
+
+Output:
+
+4
+
+We will only send in the name of the array as argument, which is nothing but the address of the starting element of the array, or we can say the starting memory address.
+
+
+#include<stdio.h>
+
+float findAverage(int marks[]);
+
+int main()
+{
+    float avg;
+    int marks[] = {99, 90, 96, 93, 95};
+    avg = findAverage(marks);       // name of the array is passed as argument.
+    printf("Average marks = %.1f", avg);
+    return 0;
+}
+
+float findAverage(int marks[])
+{
+    int i, sum = 0;
+    float avg;
+    for (i = 0; i <= 4; i++) {
+        sum += marks[i];
+    }
+    avg = (sum / 5);
+    return avg;
+}
+
+Output:
+
+94.6
+
+Here again, we will only pass the name of the array as argument.
+
+#include<stdio.h>
+
+void displayArray(int arr[3][3]);
+
+int main()
+{
+    int arr[3][3], i, j;
+    printf("Please enter 9 numbers for the array: \n");
+    for (i = 0; i < 3; ++i)
+    {
+        for (j = 0; j < 3; ++j)
+        {    
+            scanf("%d", &arr[i][j]);
+        }
+    }
+    // passing the array as argument
+    displayArray(arr);
+    return 0;
+}
+
+void displayArray(int arr[3][3])
+{
+    int i, j;
+    printf("The complete array is: \n");
+    for (i = 0; i < 3; ++i)
+    {
+        // getting cursor to new line
+        printf("\n");
+        for (j = 0; j < 3; ++j)
+        {       
+            // \t is used to provide tab space
+            printf("%d\t", arr[i][j]);
+        }
+    }
+}
+
+Output:
+
+Please enter 9 numbers for the array:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+The complete array is:
+1   2   3
+4   5   6
+7   8   9
+
+
+
+
+
+
+
+Examples:
+
+1.
+Program to calculate the area of square. 
+
+#include<stdio.h>  
+int sum();  
+void main()  
+{  
+    printf("Calculate the area of the square\n");  
+    float area = square();  
+    printf("The area of the square: %f\n",area);  
+}  
+int square()  
+{  
+    float side;  
+    printf("Enter the length of the side in meters: ");  
+    scanf("%f",&side);  
+    return side * side;  
+}  
+
+Code:
+
+Calculate the area of the square 
+Enter the length of the side in meters: 10 
+The area of the square: 100.000000
+
+2.
+Program to Convert Decimal to Octal
+
+#include <stdio.h>
+#include <math.h>
+
+// function prototype
+int convertDecimalToOctal(int decimalNumber);
+
+int main() {
+
+int decimalNumber;
+
+printf("Enter a decimal number: ");
+scanf("%d", &decimalNumber);
+
+printf("%d in decimal = %d in octal", decimalNumber, convertDecimalToOctal(decimalNumber));
+
+return 0;
+}
+
+// function to convert decimalNumber to octal
+int convertDecimalToOctal(int decimalNumber) {
+int octalNumber = 0, i = 1;
+
+while (decimalNumber != 0) {
+octalNumber += (decimalNumber % 8) * i;
+decimalNumber /= 8;
+i *= 10;
+}
+
+return octalNumber;
+}
+
+Output:
+
+Enter a decimal number: 78
+78 in decimal = 116 in octal
+
+3.
+Program to check whether a number is even or odd
+
+#include<stdio.h>  
+int even_odd(int);  
+void main()  
+{  
+ int n,flag=0;  
+ printf("\nCheck whether a number is even or odd");  
+ printf("\nEnter the number: ");  
+ scanf("%d",&n);  
+ flag = even_odd(n);  
+ if(flag == 0)  
+ {  
+    printf("\nThe number is odd");  
+ }  
+ else   
+ {  
+    printf("\nThe number is even");  
+ }  
+}  
+int even_odd(int n)  
+{  
+    if(n%2 == 0)  
+    {  
+        return 1;  
+    }  
+    else   
+    {  
+        return 0;  
+    }  
+}  
+
+Output:
+
+Check whether a number is even or odd
+Enter the number: 67
+The number is odd
+
+
+4.
+Program to find a factorial of a number. 
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+ 
+    printf("Enter a Number to Find Factorial: ");
+    printf("\nFactorial of a Given Number is: %d ",fact());
+    return 0;
+}
+int fact()
+{
+    int i,fact=1,n;
+    scanf("%d",&n);
+    for(i=1; i<=n; i++)
+    {
+        fact=fact*i;
+    }
+    return fact;
+}
+
