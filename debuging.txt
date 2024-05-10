@@ -1,0 +1,19 @@
+#include <stdio.h>
+2
+3	char * buf;
+4
+5	int sum_to_n(int num)
+6	{
+7	  int i, sum = 0;
+8	  for(i = 1; i <= num; i++)
+9	    sum += i;
+10	  return sum;
+11	}
+12
+13	int main(void)
+14	{
+15	  int n = 10;
+16	  sprintf(buf,"sum=%d",sum_to_n(n));
+17	  printf("%s\n",sum_to_n(n));
+18	  return 0;
+19	}(gdb) b 7
