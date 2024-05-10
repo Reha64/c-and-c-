@@ -1,0 +1,99 @@
+
+3.3 Simple Assignment Operator In C (=)
+#include <stdio.h>
+ 
+int main() {
+int x = 5;
+printf("The value of x is %d\n", x);
+return 0;
+}
+3.4 Addition Assignment Operator In C (+=)
+#include <stdio.h>
+ 
+int main() {
+int x = 5;
+x += 3;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+3.5 Subtraction Assignment Operator In C (-=)
+#include <stdio.h>
+ 
+int main() {
+int x = 10;
+x -= 3;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+3.6 Multiplication Assignment Operator In C (*=)
+#include <stdio.h>
+ 
+int main() {
+int x = 5;
+x *= 4;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+3.7 Division Assignment Operator In C(/=)
+#include <stdio.h>
+ 
+int main() {
+int x = 10;
+x /= 2;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+3.8 Modulo Assignment Operator In C (%=)
+#include <stdio.h>
+ 
+int main() {
+int x = 15;
+x %= 4;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+4.1 Bitwise AND Assignment Operator In C (&=)
+#include <stdio.h>
+ 
+int main() {
+int x = 12;
+x &= 5;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+4.2 Bitwise OR Assignment Operator In C (|=)
+#include <stdio.h>
+ 
+int main() {
+int x = 12;
+x |= 5;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+4.3 Left Shift Assignment Operator In C (<<=)
+#include <stdio.h>
+ 
+int main() {
+int x = 10;
+x <<= 2;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
+4.4 Right Shift Assignment Operator In C (>>=)
+#include <stdio.h>
+ 
+int main() {
+int x = 10;
+x >>= 1;
+printf("The value of x is %d\n", x);
+ 
+return 0;
+}
