@@ -1,0 +1,33 @@
+4.1 Logical AND Operator (&&)
+
+
+Example
+
+int age = 25;
+int height = 180;
+if (age >= 18 && height >= 160) {
+    printf(“You are eligible for the ride.n”);
+} else {
+    printf(“You are not eligible for the ride.n”);
+}
+4.2  Logical OR Operator (||)
+Example
+
+int temperature = 28;
+int humidity = 90;
+if (temperature > 30 || humidity > 80) {
+    printf("It's a hot and humid day!n");
+} else {
+    printf("The weather is pleasant.n");
+}
+4.3 Logical NOT Operator (!)
+
+
+Example
+
+int hasPermission = 1;
+if (!hasPermission) {
+    printf("Access denied!n");
+} else {
+    printf("Access granted!n");
+}
