@@ -1,0 +1,141 @@
+
+
+
+
+
+1. C Program to Print “Hello World”
+#include <stdio.h>
+ 
+// main function -
+// where the execution of program begins
+int main()
+{
+ 
+    // prints hello world
+    printf("Hello World");
+ 
+    return 0;
+}
+
+2. C Program To Print Your Own Name
+Here, we can use the 2 different approaches to print the name:
+Using printf()
+Using scanf()
+Example 1: In this example, we print the user name using printf() function
+#include <stdio.h>
+
+int main()
+{
+    // print name
+    printf("Name : GeeksforGeeks");
+    return 0;
+}
+Example 2: In this example, we use scanf() to accept the name as input from the user and then print it.
+
+// C program to demonstrate printing of
+// our own name using scanf()
+#include <stdio.h>
+
+int main()
+{
+    char name[20];
+    printf("Enter name: ");
+
+    // user input will be taken here
+    scanf("%s", name);
+    printf("Your name is %s.", name);
+    return 0;
+}
+3. C Program to Add Two Numbers
+Below is the program to find the sum of two numbers in C (more specifically integers) entered by the user.
+// C program to add two numbers
+#include <stdio.h>
+  
+int main()
+{
+    int A, B, sum = 0;
+  
+    // Ask user to enter the two numbers
+    printf("Enter two numbers A and B : \n");
+  
+    // Read two numbers from the user || A = 2, B = 3
+    scanf("%d%d", &A, &B);
+  
+    // Calculate the addition of A and B
+    // using '+' operator
+    sum = A + B;
+  
+    // Print the sum
+    printf("Sum of A and B is: %d", sum);
+  
+    return 0;
+}
+
+4. C Program to Check Prime Number Using Simple Approach
+
+// C Program to check for prime number using Simple Approach
+#include <stdio.h>
+
+// Function to check prime number
+void checkPrime(int N)
+{
+    // initially, flag is set to true or 1
+    int flag = 1;
+
+    // loop to iterate through 2 to N/2
+    for (int i = 2; i <= N / 2; i++) {
+
+        // if N is perfectly divisible by i
+        // flag is set to 0 i.e false
+        if (N % i == 0) {
+            flag = 0;
+            break;
+        }
+    }
+
+    if (flag) {
+        printf("The number %d is a Prime Number\n", N);
+    }
+    else {
+        printf("The number %d is not a Prime Number\n", N);
+    }
+
+    return;
+}
+
+// driver code
+int main()
+{
+    int N = 546;
+
+    checkPrime(N);
+
+    return 0;
+}
+
+5. C Program To Multiply Two Floating-Point Numbers
+// C program to multiply two
+// floating point numbers
+#include <stdio.h>
+  
+// Function to multiply floating point
+// numbers
+float multiply(float a, float b) 
+{ 
+  return a * b; 
+}
+  
+// Driver code
+int main()
+{
+    float A = 2.12, B = 3.88, product;
+  
+    // Calling product function
+    product = multiply(A, B);
+  
+    // Displaying result up to 3 decimal places.
+    printf("Product of entered numbers is:%.3f", product);
+  
+    return 0;
+}
+
