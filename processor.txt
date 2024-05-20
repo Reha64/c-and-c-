@@ -1,0 +1,119 @@
+2.1 #define (Macros)
+
+#include <stdio.h>
+
+#define MAX(a,b) ((a)>(b)?(a):(b))
+
+void main() {
+
+STEMboti
+
+printf("Maximum between 10 and 20 is: %d\n", MAX(10,20));
+
+}
+
+
+
+2.3 #Ifdef
+
+#include <stdio.h>
+
+#define PI 3.1415
+
+#undef PI
+
+main() {
+
+("%f",PI);
+
+}
+
+
+
+
+
+
+2.4 #Ifndef
+
+
+#include <stdio.h>
+
+#include <conio.h>
+
+#define NUMBER 1
+
+void main() {
+
+#if NUMBER==0
+
+printf("Value of Number is: %d", NUMBER);
+
+#else
+
+printf("Value of Number is non-zero");
+
+
+
+2.5 #Error
+
+
+#include<stdio.h>
+
+#ifndef _MATH_H
+
+#error First include then compile
+
+#else
+
+void main(){
+
+float a;
+
+a=sqrt(7);
+
+printf("%f",a);
+
+}
+
+
+
+
+
+
+
+
+
+
+2.6 #pragma
+
+
+
+#include<stdio.h>
+
+#include<conio.h>
+
+void func();
+
+#pragma startup func
+
+#pragma exit func
+
+void main(){
+
+printf("\nI am in main");
+
+getch(); } +
+
+void func(){
+
+printf("\nI am in func");
+
+getch();
+
+}
+
+#endif
+
+getch();
+
+}

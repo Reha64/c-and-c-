@@ -1,0 +1,49 @@
+ 2.1Arithmetic expression
+#include <stdio.h>
+int main(){
+  //Arithmetic Expression
+  int a = (6 * 2) + 7 - 9; 
+  printf("The arithmetic expression returns: %d\n", a);
+  return 0;
+}
+2.2 Relational expression
+#include <stdio.h>
+int main(){
+  //Relational Expression
+  int b = 10;
+  printf("The relational expression returns: %d\n", b % 2 == 0);
+  return 0;
+}
+2.3 Logical expression
+int main(){
+  //Logical Expression
+  int c = (7 > 9) && ( 5 <= 9);
+  printf("The logical expression returns: %d\n", c);
+  return 0;
+}
+2.4 Conditional expression
+#include <stdio.h>
+int main(){
+  //Conditional Expression
+  int d = (34 > 7) ? 1 : 0;
+  printf("The conditional expression returns: %d\n", d);
+  return 0;
+}
+2.5 Pointer expression
+#include <stdio.h>
+int main(){
+  //Pointer Expression
+  int e = 20; 
+  int *addr = &e;
+  printf("The pointer expression returns: %p\n", addr);
+  return 0;
+}
+2.6 Bitwise expression
+#include <stdio.h>
+int main(){
+  //Bitwise Expression
+  int f = 10;
+  int shift = 10 >> 1;
+  printf("The bitwise expression returns: %d\n", shift);
+  return 0;
+}
